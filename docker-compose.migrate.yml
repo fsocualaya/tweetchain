@@ -1,0 +1,21 @@
+version: "3.9"
+
+services:
+  blockchain:
+    build:
+      context: ./blockchain
+      dockerfile: migrate.Dockerfile
+    container_name: tweetchain-blockchain
+    volumes:
+      - "./blockchain:/usr/src/app"
+    env_file: blockchain/.env
+
+  ui:
+    build:
+      context: ./ui
+      dockerfile: migrate.Dockerfile
+    container_name: tweetchain-ui
+    ports:
+      - "3000:3000"
+    volumes:
+      - "./ui:/usr/src/app"

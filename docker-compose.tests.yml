@@ -1,0 +1,30 @@
+version: "3.9"
+
+services:
+    ganache:
+        container_name: ganache
+        image: trufflesuite/ganache-cli:v6.12.2
+        ports:
+            - "8545:8545"
+        #logging:
+        #    driver: none
+
+    blockchain:
+        build:
+            context: ./blockchain
+            dockerfile: tests.Dockerfile
+        container_name: tweetchain-blockchain
+        volumes:
+            - "./blockchain:/usr/src/app"
+        environment:
+            - host=ganache
+
+    ui:
+        build:
+            context: ./ui
+            dockerfile: migrate.Dockerfile
+        container_name: tweetchain-ui
+        ports:
+            - "3000:3000"
+        volumes:
+            - "./ui:/usr/src/app"

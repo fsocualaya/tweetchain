@@ -1,0 +1,19 @@
+.tweetCard {
+	background-color: whitesmoke;
+	min-width: 45vw;
+	display: flex;
+	flex-direction: column;
+	text-align: justify;
+	justify-content: space-around;
+	min-height: 8vh;
+	margin: 0.2rem;
+	padding: 0.5rem;
+	border-radius: 6px;
+}
+
+.tweetList {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
